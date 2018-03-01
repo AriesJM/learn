@@ -5,13 +5,11 @@
 	- 堆在接收数据的时候先接收的数据会被先弹出。
 	- 栈的特性正好与堆相反，是属于FILO(first in/last out)先进后出的类型。
 	- 栈处于一级缓存而堆处于二级缓存中。
-
 - 堆节点的访问
 	- 通常堆是通过一维数组来实现的。在阵列起始位置为0的情况中
 	- (1)父节点i的左子节点在位置(2*i+1);
 	- (2)父节点i的右子节点在位置(2*i+2);
 	- (3)子节点i的父节点在位置floor((i-1)/2);
-
 - 堆操作
 	- 堆可以分为大根堆和小根堆，这里用最大堆的情况来定义操作:
 	- (1)最大堆调整(MAX_Heapify):将堆的末端子节点作调整，使得子节点永远小于父节点。
@@ -27,7 +25,6 @@
 	- 交换，然后将前面len-1个节点继续做堆调整的过程。直到将所有的节点取出，
 	- 对于n个数我们只需要做n-1次操作。
 '''
-
 def MAX_Heapify(heap,HeapSize,root):# 在堆中做结构调整使得父节点的值大于子节点，递归调整
     '''
     将列表看做树状结构，左节点位置等于2*root+1,右节点等于left+1,larger 最大值应该是父节点
@@ -47,8 +44,7 @@ def MAX_Heapify(heap,HeapSize,root):# 在堆中做结构调整使得父节点的
     if larger != root:# 如果做了堆调整则larger的值等于左节点或者右节点的，这个时候做对调值操作
         heap[larger],heap[root] = heap[root],heap[larger]
         MAX_Heapify(heap, HeapSize, larger)
-
-
+        
 def Build_MAX_Heap(heap):# 构造一个堆，将堆中所有数据重新排序
     HeapSize = len(heap)# 将堆的长度当独拿出来方便
     for i in range((HeapSize -2)//2,-1,-1):# 从后往前出数
@@ -62,7 +58,6 @@ def HeapSort(heap):# 将根节点取出与最后一位做对调，对前面len-1
         heap[0],heap[i] = heap[i],heap[0] 
         MAX_Heapify(heap, i, 0) #  调整使得父节点的值大于子节点
     return heap
-
 
 #  将列表看做是树状结构，递归调整使得父节点
 #  		21 
